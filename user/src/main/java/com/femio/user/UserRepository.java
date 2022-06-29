@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     void deleteUserById(Long id);
-    Optional<UserEntity> findUserById(Long id);
+    UserEntity findUserById(Long id);
 
     @Query(value = "SELECT * FROM users WHERE username = ?1 AND password = ?2", nativeQuery = true)
     Optional<UserEntity> loginUser(String username, String password);

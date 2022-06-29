@@ -50,15 +50,16 @@ public class UserService {
     }
 
     public UserEntity findUserById(Long id){
-        return userRepository.findUserById(id)
-                .orElseThrow(() -> new UserNotFoundException("User by id: "+id+" was not found"));
+        return userRepository.findUserById(id);
     }
 
     public void deleteUser(Long id){
         userRepository.deleteUserById(id);
     }
 
-    public UserEntity loginUser(String username, String password) {
+    public UserEntity loginUser(LoginRequest loginRequest) {
+        String username = loginRequest.getUsername();
+        String password = loginRequest.getPassword();
         return userRepository.loginUser(username, password)
                 .orElseThrow(() -> new UserNotFoundException("User by username: "+username+" was not found"));
     }

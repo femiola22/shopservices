@@ -50,7 +50,7 @@ public class UserController {
 
     @GetMapping("/login")
     public ResponseEntity<UserEntity> loginUser(@RequestBody LoginRequest loginRequest) {
-        UserEntity userEntity = userService.loginUser(loginRequest.getUsername(), loginRequest.getPassword());
+        UserEntity userEntity = userService.loginUser(loginRequest);
         return new ResponseEntity<>(userEntity, HttpStatus.OK);
     }
 }
